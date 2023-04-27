@@ -1,0 +1,26 @@
+{% extends "base_detail.html" %} 
+{% block extend %}
+<br/>
+<div class="col-md-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Desc</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">CR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in object.tableentry_set.all %}  
+                    <tr>
+                        <th scope="row"> {{ forloop.counter }}</th>
+                        <td>{{ i.snip }}</td>
+                        <td>{{ i.entry|safe }}</td>
+                        <td>{{ i.cr }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock extend %}

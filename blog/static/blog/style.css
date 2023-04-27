@@ -1,0 +1,43 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 17px;
+    /*background-color: #fdfdfd; */
+}
+
+.masthead {
+    background: #a01515;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px #E3E7EB;
+    padding-top: 10px;
+}
+
+.card {
+    box-shadow: 0 16px 48px #E3E7EB;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    color:black;
+    /*font-style: italic; */
+}
+
+a:hover {
+    color:#a01515;;
+    text-decoration: underline;
+}
+
+.quote {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    font-family: 'Libre Baskerville', serif;
+}
+
+/*#quote {
+    font-family: 'Times New Roman', Times, serif;
+} */

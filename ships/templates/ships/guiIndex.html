@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block headcontent %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href = "{% static 'ships/style.css' %}">
+<script src="{% static "ships/js.js" %}"></script>
+<link rel="stylesheet" type="text/css" href=" {% static 'ships/rpg-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href=" {% static 'ships/rpgawesome-webfont.ttf' %}">
+{% endblock headcontent %}
+{% load funct %}
+{% block content %}
+
+<div class="container">
+    <div class="row align-items-center justify-content-center my-3">
+        {% if user.is_superuser %}
+            <div class="col">
+                <span>Generate Ship:</span><div class="w-100"></div>
+                <form style="display: inline;" action="/ships/newship/Sloop", method="GET">
+                    <button>Sloop</button>
+                </form>
+                <form style="display: inline;" action="/ships/newship/Brig", method="GET">
+                    <button>Brig</button>
+                </form>
+            </div>
+        {% endif %}
+        {% if request.path != "/ships" %}
+            <div class="col">
+                <form action="/ships", method="GET">
+                    <button>Load Ship</button>
+                </form>
+                <form>
+                    <label for="Species">Choose a species:</label><br>
+                    <select name="Species" id="Species" onChange='getSpecies()' onfocus='this.selectedIndex = -1;'>
+                            <option value = ""></option>
+                        {% for i in Species %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                  </form>
+            </div>
+        {% endif %}
+    </div>
+    
+    {% if Ships %}
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12">
+                <h4>Ships:</h4>
+            </div>
+            {% for i in Ships %}
+                <div class="col-4 col-md my-2">
+                    <form action="/ships/{{ i }}", method="GET">
+                        <button>{{ i }}</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <div class="row align-items-center justify-content-center">
+        {% if Ship %}
+            <div class="col-12">
+                <h2>{{ Ship.name }} <i class="ra {{ Ship.flag }}"></i></h2>
+            </div>
+        {% endif %}
+            <!-- Captain + Officers -->
+        {% if Officer  %}
+            <div class="col-12 my-2">
+                <h4>Officers:</h4>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                {% for i in Officer %}
+                    <div class=" col-6 col-md-3 my-2">
+                        <div class="col">
+                            <b>{{ i.role }}:</b>
+                        </div>
+                        <div class="col">
+                            <div class="character" onclick="getInfo(this)">
+                                <a href='#infoContainer'>{{ i.name }}</a>
+                                {% for j in Dir %}
+                                    <span class="characterAttrs">{{ j|title }}: {{ i|getAtr:j }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if Crew  %}
+        <!-- Crew -->
+            <div class="col my-2">
+                <h4>Crew<i class="ra ra-double-team ra-2x"></i>:</h4>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                {% for i in Crew %}
+                    <div class="col-6 col-md-2 my-2">
+                        <div class="character" onclick="getInfo(this)">
+                            <a href='#infoContainer'>{{ i.name }}</a>
+                            {% for j in Dir %}
+                                <span class="characterAttrs">{{ j|title }}: {{ i|getAtr:j }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div  id="infoContainer" class="row align-items-center justify-content-center">
+        </div>
+    </div>
+</div>
+{%  endblock content %}

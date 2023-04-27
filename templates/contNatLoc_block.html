@@ -1,0 +1,7 @@
+
+<a href = "{% url url_detail i.slug %}"><h3 class="title">{{ name }}</h3></a>
+{% if tag != Null %}
+    <p>{{ tag }}</p>
+{% else %}
+    <br/>
+{% endif %}

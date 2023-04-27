@@ -1,0 +1,8 @@
+{% extends 'base_detail.html' %} {% block extend %}
+
+<h3 class="title"><u>Members</u></h3>
+{% for i in object.person_set.all %}
+    {% include 'person_block.html' %}
+{% endfor %}
+
+{% endblock extend %}

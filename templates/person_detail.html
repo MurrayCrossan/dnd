@@ -1,0 +1,25 @@
+{% extends 'base_detail.html' %} {% block extend %}
+
+<h1 class="title"> {{ object.fname }} {{ object.sname }}</h1>
+<p>{{ object.content }}</p>
+
+{% if object.orgMember.all|length != 0 %}
+<h3 class="title"><u>Organisations</u></h3>
+{% for i in object.orgMember.all %}
+    <a href = "{% url 'organisation_detail' i.slug %}"><p>{{ i.name }}</a> - {{ i.type }}</p>
+    <!-- Add Org Tag!-->
+{% endfor %}
+{% endif %}
+
+{% if object.item_set.all|length != 0 %}
+<h3 class="title"><u>Items</u></h3>
+{% for i in object.item_set.all %}
+    <a href = "{% url 'item_detail' i.slug %}"><p>{{ i.name }}</a> - {{ i.type }} <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;{{ i.effect }}</p>
+{% endfor %}
+{% endif %}
+
+{% endblock extend %}
+
+{% if object.orgMember.all|length != 0 %}
+{% endif %}

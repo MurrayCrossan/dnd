@@ -1,0 +1,25 @@
+{% extends 'base_detail.html' %} {% block extend %}
+
+{% if object.content %}
+    {{ object.content|safe }}
+{% endif %}
+
+{% if object.shop_set.all|length != 0 %}
+    <u><h3 class="title">Shops</h3></u>
+    {% for i in object.shop_set.all %}
+        <u><p>{{ i.name }} - {{ i.type }}</u><br/>
+        Owner: <a href="{% url 'person_detail' i.owner.slug %}"> {{ i.owner }}</a><br/>
+        {% if i.content %}
+            &nbsp;&nbsp;&nbsp;&nbsp;{{i.content}}</p>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if object.person_set.all|length != 0 %}
+    <u><h3 class="title">Citizens</h3></u>
+    {% for i in object.person_set.all %}
+        {% include 'person_block.html' %}
+    {% endfor %}
+{% endif %}
+
+{% endblock extend %}

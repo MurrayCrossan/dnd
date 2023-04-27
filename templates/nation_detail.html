@@ -1,0 +1,8 @@
+{% extends 'base_detail.html' %} {% block extend %}
+
+<u><h3 class="title">Locations</h3></u>
+{% for i in object.location_set.all %}
+    {% include 'contNatLoc_block.html' with url_detail='location_detail' name=i.name tag=i.tag %}
+{% endfor %}
+
+{% endblock extend %}

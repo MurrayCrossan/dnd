@@ -1,0 +1,106 @@
+#containerDiv {
+    height: auto;
+    width: 70%;
+    margin: auto;
+}
+#topContainer {
+    width: auto;
+    /*border: black 1px solid; */
+    overflow: auto;
+    display: flex;
+}
+
+#generateContainer {
+    order: 1;
+    float: left;
+    margin: 5px 0 0 5%;
+    min-width: 185px;
+}
+
+#countContainer {
+    order:2;
+    /*padding: 0 10px; */
+    margin: 0 auto;
+    text-align: center;
+}
+
+#sortContainer {
+    order:3;
+    float: right;
+    margin: 50px 5% 0 0;
+    min-width: 185px;
+}
+
+#saved {
+    z-index: 1;
+    float: right;
+}
+
+#saved button {
+    margin: 1px;
+}
+
+
+li:hover {
+    color:blue;
+    text-decoration: underline;
+}
+
+.tool {
+    visibility: visible;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.tool .tooltiptext {
+    word-wrap: break-word;
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin: 10px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -100px; /* Use half of the width to center the tooltip */
+    z-index: 1;
+}
+
+.tool:hover .tooltiptext {
+    visibility: visible;
+    background-color: black;
+}
+
+#seatNum {
+    /*size: 2; */
+    width: 40px;
+}
+
+#saves {
+    margin: auto;
+}
+
+pre {
+    display: inline-block;
+}
+
+.tool p {
+    display: inline;
+}
+
+button {
+    margin: 1px;
+}
+
+/* .tooltip .tooltiptext img {
+    width: 187.25px;
+    height: auto;
+    scale: 0.5;
+}
+*/

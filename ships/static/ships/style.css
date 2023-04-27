@@ -1,0 +1,68 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 17px;
+    /*background-color: #fdfdfd; */
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: hidden;
+}
+
+.masthead {
+    background: #a01515;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px #E3E7EB;
+    padding-top: 10px;
+}
+
+.card {
+    box-shadow: 0 16px 48px #E3E7EB;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    color:black;
+    /*font-style: italic; */
+    text-decoration: none;
+}
+
+a:hover {
+    color:#a01515;
+    text-decoration: underline;
+}
+
+.quote {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    font-family: 'Libre Baskerville', serif;
+}
+
+.characterAttrs {
+    word-wrap: break-word;
+    visibility: hidden;
+    position: absolute;
+    
+}
+
+.container {
+    text-align: center;
+}
+
+/*
+#generateContainer, #crewContainer, #infoContainer, #shipListContainer {
+    text-align: center;
+}*/
+
+.role {
+    display: inline;
+}

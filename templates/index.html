@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block headcontent %}
+<link rel="stylesheet" type="text/css" href = "{% static 'blog/style.css' %}">
+{% endblock headcontent %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-12 mt-3">
+            {% for cont in continent_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <a href = "{% url 'continent_detail' cont.slug %}"><h2 class="card-title title">{{ cont.name }}</h2></a>
+                    {% if cont.tag != Null %}
+                        <p>{{ cont.tag }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}

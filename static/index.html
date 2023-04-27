@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='style.css'>
+        <script src="generate.js"></script>
+        <link href="\fontawesome-free-6.0.0-web\css\all.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="saved">
+            <ul> <u>Load Saves</u>
+                <li onclick="load(0)" class="saveSlot" id="save1">Save 1</li>
+                <li onclick="load(1)" class="saveSlot" id="save2">Save 2</li>
+                <li onclick="load(2)" class="saveSlot" id="save3">Save 3</li>
+                <li onclick="load(3)" class="saveSlot" id="save4">Save 4</li>
+                <li onclick="load(4)" class="saveSlot" id="save5">Save 5</li>
+            </ul>
+            <button onclick="save()">Save</button>
+            <button onclick="clearElm()">Clear</button>
+        </div>
+        <div id="topContainer">    
+            <div id="generateContainer">
+                <input type="number" min="1" value="1" id ="seatNum"><pre id="generateButtonText"> : Number of seats</pre></input><br/>
+                <button onclick='box(document.getElementById("seatNum").value)'>Generate Seats</button><br/>
+                <button onclick='box(100)'>Generate 100 Seats</button><br/>
+            </div>
+            <div id="countContainer"></div>
+            <div id="sortContainer">
+                <pre>sort by:</pre><br/>
+                <select name="sort" id="sortDropdown" onchange="sort()">
+                    <option disabled selected value="none">Select an option</option>
+                    <option value="nameText">Name</option>
+                    <option value="partyText">Party</option>
+                    <option value="genderText">Gender</option>
+                    <option value="raceText">Race</option>
+                </select>
+            </div>
+        </div><br/>
+        <div id='containerDiv'></div>
+    </body>
+</html>

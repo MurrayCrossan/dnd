@@ -1,0 +1,16 @@
+{% extends 'base_detail.html' %} {% block extend %}
+
+<u><h3 class="title">Nations</h3></u>
+{% for i in object.nation_set.all %}
+    {% include 'contNatLoc_block.html' with url_detail='nation_detail' name=i.name tag=i.tag %}
+{% endfor %}
+
+<!--
+{% for i in object.nation_set.all %}
+    <a href = "{% url 'nation_detail' i.slug %}"><h2>{{ i }}</h2></a>
+    {% if i.tag != Null %}
+            <p>{{ i.tag }}</p>
+    {% endif %}
+{% endfor %}
+-->
+{% endblock extend %}

@@ -1,0 +1,113 @@
+{% extends 'ships/base.html' %}
+
+{% block headcontent %}
+{% load static %}
+<script src="{% static "ships/js.js" %}"></script>
+<link rel="stylesheet" type="text/css" href=" {% static 'ships/rpg-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href=" {% static 'ships/rpgawesome-webfont.ttf' %}">
+{% endblock headcontent %}
+{% load funct %}
+{% block content %}
+
+<div class="container">
+
+    <div class="generateContainer">
+        <div class="row">
+            {% if user.is_superuser %}
+                <div class="shipButtonsContainer col">
+                    <span>Generate Ship:</span><br>
+                    <form style="display: inline;" action="/New/Sloop", method="GET">
+                        <button>Sloop</button>
+                    </form>
+                    <form style="display: inline;" action="/New/Brig", method="GET">
+                        <button>Brig</button>
+                    </form>
+                </div>
+            {% endif %}
+            {% if request.path != "/" %}
+                <div class="col">
+                    <br>
+                    <form style="display: inline" action="/", method="GET">
+                        <button>Load Ship</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+
+    <div style="text-align: center;">
+        
+        {% if Ships %}
+        <h4>Ships:</h4>
+            {% for i in Ships %}
+                <form style="display: inline;" action="/Ship/{{ i }}", method="GET">
+                    <button>{{ i }}</button>
+                </form>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    <div class="crewContainer container", id="crewContainer">
+        {% if Ship %}
+            <h2>{{ Ship.name }} <i class="ra {{ Ship.flag }}"></i></h2>
+        {% endif %}
+            <!-- Captain + Officers -->
+            {% if Officer  %}
+            <!-- Officer -->
+            <div class="row">
+                <div class="col">
+                    <h4>Officers:</h4>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                {% for i in Officer %}
+                    <div class="col-md-2 col-xs-6">
+                        {{ i.role }}:
+                    </div>
+                    
+                    <div class="col-md-2 col-xs-6 mb-3">
+                        <div class="characterDiv" onclick="show(this)">
+                            {{ i.name }}
+                            <span class="characterInfo">
+                            {% for j in Dir %}
+                                <span>{{ j|title }}: {{ i|getAtr:j }}</span><br>
+                            {% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                
+                {% endfor %}
+            </div>
+        {% endif %}
+        <br><br>
+
+        {% if Crew  %}
+        <!-- Crew -->
+            <h4>Crew<i class="ra ra-double-team ra-2x"></i>:</h4>
+        
+            <div class="row align-items-center">
+                {% for i in Crew %}
+                    
+                        <div class="col-md-2 col-xs-1 mb-3 justify-content-left">
+                            <div class="characterDiv" onclick="show(this)">
+                                {{ i.name }}
+                                <span class="characterInfo">
+                                {% for j in Dir %}
+                                    <span>{{ j|title }}: {{ i|getAtr:j }}</span><br>
+                                {% endfor %}
+                                </span>
+                            </div>
+                        </div>
+                
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <br>
+    <div class="container">
+        <div class="row align-items-center justify-content-start" id="infoContainer">
+        </div>
+    </div
+</div>
+{%  endblock content %}

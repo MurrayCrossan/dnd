@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block headcontent %}
+<link rel="stylesheet" type="text/css" href = "{% static 'blog/style.css' %}">
+{% endblock headcontent %}
+{% block content %}
+<!--<a href='{{ referer }}'><p>Back</p></a>
+ {{ referer }} -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1 class="title">{% block title %} {{ object.name }} {% endblock title %}</h1>
+        {% block extend %}
+      
+        {% endblock extend %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
